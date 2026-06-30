@@ -1,9 +1,8 @@
 import { router } from "expo-router";
 import {
-  ScrollView,
-  View,
-  Text,
   Pressable,
+  ScrollView,
+  Text,
 } from "react-native";
 
 export default function AddScreen() {
