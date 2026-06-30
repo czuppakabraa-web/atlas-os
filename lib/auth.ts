@@ -22,12 +22,20 @@ export async function getUser() {
   return await supabase.auth.getUser();
 }
 
-export async function ensureProfile() {
+export async function requireUser() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) return null;
+  if (!user) {
+    throw new Error("Brak użytkownika.");
+  }
+
+  return user;
+}
+
+export async function ensureProfile() {
+  const user = await requireUser();
 
   // sprawdź czy profil istnieje
   const { data: profile } = await supabase

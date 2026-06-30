@@ -1,11 +1,18 @@
-export const Typography = {
-  title: 34,
+export const AtlasTypography = {
+  heading: 42,
 
-  subtitle: 22,
+  title: 28,
 
-  body: 17,
+  body: 18,
 
-  caption: 14,
+  small: 14,
 
   micro: 12,
+
+  number: 42,
+
+  // alias dla starego kodu
+  caption: 14,
 };
+
+export const Typography = AtlasTypography;

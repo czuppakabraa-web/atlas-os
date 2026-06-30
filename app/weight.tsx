@@ -1,23 +1,18 @@
+import { router } from "expo-router";
 import { useState } from "react";
 import { Alert, View } from "react-native";
-import { router } from "expo-router";
 
-import TextField from "../components/ui/TextField";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import TextField from "../components/ui/TextField";
 
-import { saveWeight } from "../lib/weights";
+import { saveUserWeight } from "@/services/weightService";
 
 export default function WeightScreen() {
   const [weight, setWeight] = useState("");
 
   async function save() {
-    if (!weight) {
-      Alert.alert("Błąd", "Podaj wagę.");
-      return;
-    }
-
     try {
-      await saveWeight(Number(weight.replace(",", ".")));
+      await saveUserWeight(weight);
 
       Alert.alert("Sukces", "Waga zapisana.");
 

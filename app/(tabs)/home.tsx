@@ -6,8 +6,8 @@ import {
   Text,
 } from "react-native";
 
+import AtlasNavigator from "@/components/navigator/AtlasNavigator";
 import SystemCard from "../../components/cards/SystemCard";
-import NutritionTimeline from "../../components/nutrition/NutritionTimeline";
 
 import {
   Colors,
@@ -83,82 +83,77 @@ export default function HomeScreen() {
     Math.round(overview?.totals?.fat ?? 0);
 
   return (
-    <ScrollView
-      style={{
-        flex: 1,
-        backgroundColor: Colors.background,
-      }}
-      contentContainerStyle={{
-        padding: Spacing.lg,
-        paddingTop: 70,
-        paddingBottom: 80,
-      }}
-    >
-      <Text
+    <>
+      <ScrollView
         style={{
-          color: Colors.primary,
-          letterSpacing: 6,
-          fontSize: Typography.micro,
+          flex: 1,
+          backgroundColor: Colors.background,
+        }}
+        contentContainerStyle={{
+          padding: Spacing.lg,
+          paddingTop: 70,
+          paddingBottom: 120,
         }}
       >
-        ATLAS OS
-      </Text>
+        <Text
+          style={{
+            color: Colors.primary,
+            letterSpacing: 6,
+            fontSize: Typography.micro,
+          }}
+        >
+          ATLAS OS
+        </Text>
 
-      <Text
-        style={{
-          color: Colors.text,
-          fontSize: 46,
-          fontWeight: "200",
-          marginTop: 8,
-          marginBottom: 40,
-        }}
-      >
-        OVERVIEW
-      </Text>
+        <Text
+          style={{
+            color: Colors.text,
+            fontSize: 46,
+            fontWeight: "200",
+            marginTop: 8,
+            marginBottom: 40,
+          }}
+        >
+          OVERVIEW
+        </Text>
 
-      <SystemCard
-        title="Body Mass"
-        value={weight}
-        unit="kg"
-        status={`TARGET ${target} KG`}
-      />
+        <SystemCard
+          title="Body Mass"
+          value={weight}
+          unit="kg"
+          status={`TARGET ${target} KG`}
+        />
 
-      <SystemCard
-        title="Energy"
-        value={String(calories)}
-        unit="kcal"
-        status="TODAY"
-      />
+        <SystemCard
+          title="Energy"
+          value={String(calories)}
+          unit="kcal"
+          status="TODAY"
+        />
 
-      <SystemCard
-        title="Protein"
-        value={String(protein)}
-        unit="g"
-        status="TODAY"
-      />
+        <SystemCard
+          title="Protein"
+          value={String(protein)}
+          unit="g"
+          status="TODAY"
+        />
 
-      <SystemCard
-        title="Carbohydrates"
-        value={String(carbs)}
-        unit="g"
-        status="TODAY"
-      />
+        <SystemCard
+          title="Carbohydrates"
+          value={String(carbs)}
+          unit="g"
+          status="TODAY"
+        />
 
-      <SystemCard
-        title="Fat"
-        value={String(fat)}
-        unit="g"
-        status="TODAY"
-      />
+        <SystemCard
+          title="Fat"
+          value={String(fat)}
+          unit="g"
+          status="TODAY"
+        />
+      </ScrollView>
 
-      <NutritionTimeline
-  meals={overview?.meals ?? []}
-  calories={calories}
-  protein={protein}
-  carbs={carbs}
-  fat={fat}
-  onMealPress={() => {}}
-/>
-    </ScrollView>
+      <AtlasNavigator />
+    </>
   );
 }

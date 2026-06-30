@@ -1,5 +1,7 @@
-import { getLatestWeight } from "../lib/weights";
-import { getProfile } from "../lib/profile";
+import { getProfile } from "@/repositories/ProfileRepository";
+import { getLatestWeight } from "@/repositories/WeightRepository";
+
+import { calculateRemainingWeight } from "@/utils/health";
 
 export async function getDashboard() {
   const profile = await getProfile();
@@ -8,19 +10,14 @@ export async function getDashboard() {
   const currentWeight = latestWeight?.weight ?? null;
   const targetWeight = profile?.target_weight ?? null;
 
-  let remainingWeight = null;
-
-  if (currentWeight && targetWeight) {
-    remainingWeight = Number(
-      Math.abs(currentWeight - targetWeight).toFixed(1)
-    );
-  }
-
   return {
     profile,
     currentWeight,
     targetWeight,
-    remainingWeight,
+    remainingWeight: calculateRemainingWeight(
+      currentWeight,
+      targetWeight
+    ),
     calories: 0,
     protein: 0,
     steps: 0,

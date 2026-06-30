@@ -1,42 +1,60 @@
 # ROADMAP
 
-Version: 1.0
+Version: 2.0
 
-Status: Active
+Status
+
+Active
+
+---
+
+# Vision
+
+Atlas OS is being developed as an Operating System for the Human Body.
+
+The objective is not to create another health application.
+
+The objective is to create one unified platform that replaces multiple independent applications by integrating health, nutrition, body composition, analytics and artificial intelligence into a single ecosystem.
 
 ---
 
 # Development Strategy
 
-Atlas OS is developed in phases.
+Every phase must leave the application in a stable and deployable state.
 
-Every phase must produce a working application.
-
-No new phase starts before the previous one is stable.
-
-Priority:
+Development priorities:
 
 Architecture
 
 ↓
 
-Core Features
+Core Platform
 
 ↓
 
-Data Integration
+Core Modules
 
 ↓
 
-AI
+Health Integrations
 
 ↓
 
-UI Polish
+Analytics
+
+↓
+
+Artificial Intelligence
+
+↓
+
+Production Polish
 
 ↓
 
 Public Release
+
+Architecture always has higher priority than features.
 
 ---
 
@@ -46,293 +64,246 @@ Project Foundation
 
 Status
 
+✅ Completed
+
 Completed
 
-Goals
-
-✓ Git
-
-✓ GitHub
-
-✓ TypeScript
-
-✓ Supabase
-
-✓ Project structure
-
-✓ Stable build
-
-Deliverable
-
-Working development environment.
+- Git
+- GitHub
+- TypeScript
+- Supabase
+- Authentication
+- OpenAI
+- Project Structure
+- Documentation
+- Stable Build
 
 ---
 
 # Phase 1
 
-Core Platform
+Atlas Core Platform
 
 Status
 
-In Progress
+🟢 In Progress
 
-Modules
+Objectives
 
-Authentication
-
-Profile
-
-Navigation
-
-Dashboard
-
-Nutrition
-
-Weight
-
-Settings
+- AtlasShell
+- Atlas Navigator
+- Module Registry
+- Design System
+- Core Architecture
+- Module Structure
 
 Definition of Done
 
-User can use Atlas daily without crashes.
+Atlas has a stable architecture that future modules can reuse without redesign.
 
 ---
 
 # Phase 2
 
-Weight System
+Body Module
 
 Status
 
-Planned
+🟡 Planned
 
 Features
 
-Manual weight entry
-
-Weight history
-
-Edit weight
-
-Delete weight
-
-Target weight
-
-Charts
-
-Statistics
-
-Future prediction
+- Weight Tracking
+- Body Fat
+- Muscle Mass
+- Water Percentage
+- BMI
+- Body Measurements
+- Progress Photos
+- Target Weight
+- Charts
+- Statistics
+- Trend Analysis
 
 Definition of Done
 
-Weight tracking fully functional.
+Atlas provides complete body composition tracking.
 
 ---
 
 # Phase 3
 
-Nutrition System
+Nutrition Module
 
 Status
 
-Planned
+🟡 Planned
 
 Features
 
-AI meal recognition
-
-Manual meal editing
-
-Meal deletion
-
-Daily totals
-
-Weekly totals
-
-Monthly totals
-
-Macro analysis
-
-Calorie analysis
-
-Timeline
+- AI Meal Recognition
+- Manual Editing
+- Meal Database
+- Daily Totals
+- Weekly Reports
+- Monthly Reports
+- Macro Analysis
+- Nutrition Timeline
 
 Definition of Done
 
-Nutrition tracking complete.
+Nutrition becomes production-ready.
 
 ---
 
 # Phase 4
 
-Apple Health Integration
+Training Module
 
 Status
 
-Planned
+🟡 Planned
 
-Import
+Features
 
-Weight
-
-Calories
-
-Steps
-
-Sleep
-
-Heart Rate
-
-Workouts
-
-Distance
-
-Rules
-
-Manual values remain authoritative.
-
-Imported values are synchronized.
-
-Definition of Done
-
-Apple Health fully synchronized.
+- Workout Log
+- Training History
+- Personal Records
+- Volume Tracking
+- Recovery Status
+- Progress Analysis
 
 ---
 
 # Phase 5
 
-Android Health Connect
+Health Module
 
 Status
 
-Planned
+🟡 Planned
 
-Equivalent functionality to Apple Health.
+Features
 
-Definition of Done
-
-Feature parity between iOS and Android.
+- Heart Rate
+- Blood Pressure
+- HRV
+- Blood Glucose
+- Oxygen Saturation
+- Health Timeline
 
 ---
 
 # Phase 6
 
-Analytics Engine
+Sleep Module
 
 Status
 
-Planned
+🟡 Planned
 
 Features
 
-Trend detection
-
-Weekly summaries
-
-Monthly summaries
-
-Goal tracking
-
-Plateau detection
-
-Nutrition quality
-
-Progress reports
-
-Definition of Done
-
-Atlas explains user progress automatically.
+- Sleep Tracking
+- Sleep Stages
+- Recovery
+- Readiness
+- Circadian Rhythm
 
 ---
 
 # Phase 7
 
-Atlas AI
+Health Integrations
 
 Status
 
-Planned
+🟡 Planned
 
-Features
+Integrations
 
-Daily recommendations
-
-Weekly reports
-
-Nutrition coaching
-
-Training suggestions
-
-Health explanations
-
-Prediction engine
+- Apple Health
+- Health Connect
+- Garmin
+- Oura
+- Whoop
+- Fitbit
+- Polar
 
 Definition of Done
 
-Atlas behaves like an intelligent health assistant.
+Automatic synchronization between Atlas and supported health platforms.
 
 ---
 
 # Phase 8
 
-Additional Modules
+Analytics Engine
 
 Status
 
-Planned
+🟡 Planned
 
-Sleep
+Features
 
-Hydration
-
-Supplements
-
-Body Measurements
-
-Medication
-
-Habits
-
-Stress
-
-Mood
+- Weekly Reports
+- Monthly Reports
+- Goal Tracking
+- Plateau Detection
+- Trend Analysis
+- Correlation Engine
+- Long-Term Progress
 
 Definition of Done
 
-All major health metrics supported.
+Atlas automatically explains user progress.
 
 ---
 
 # Phase 9
 
-Design Polish
+Atlas AI
 
 Status
 
-Planned
+🟡 Planned
 
-Tasks
+Features
 
-Animation polish
-
-Micro interactions
-
-Loading states
-
-Transitions
-
-Accessibility improvements
-
-Performance optimization
+- Daily Coaching
+- Nutrition Recommendations
+- Training Recommendations
+- Health Insights
+- Predictive Analytics
+- Personalized Guidance
 
 Definition of Done
 
-Professional production quality interface.
+Atlas behaves like an intelligent health operating system.
 
 ---
 
 # Phase 10
+
+Production Polish
+
+Status
+
+🟡 Planned
+
+Tasks
+
+- Animations
+- Micro Interactions
+- Accessibility
+- Performance
+- Error Handling
+- Offline Support
+- Synchronization Improvements
+
+---
+
+# Phase 11
 
 Public Release
 
@@ -342,80 +313,59 @@ Future
 
 Tasks
 
-Testing
-
-Bug fixing
-
-Store assets
-
-Privacy Policy
-
-Terms
-
-App Store
-
-Google Play
+- Internal Testing
+- Beta Testing
+- Bug Fixing
+- Store Assets
+- Privacy Policy
+- Terms of Service
+- App Store
+- Google Play
 
 Definition of Done
 
-Atlas available publicly.
+Atlas OS is publicly available.
 
 ---
 
-# Long Term Vision
+# Long-Term Vision
 
-Future integrations
+Atlas OS should replace multiple independent applications.
 
-Garmin
+Instead of using separate applications for:
 
-Whoop
+- Nutrition
+- Weight
+- Health
+- Training
+- Sleep
 
-Oura
+the user interacts with a single operating system.
 
-Fitbit
+Future expansion includes:
 
-Polar
-
-Smart Scales
-
-Continuous Glucose Monitoring
-
-Medical Devices
-
-Desktop Client
-
-Web Dashboard
-
-Apple Watch
-
-Widgets
-
-Voice Assistant
-
----
-
-# Success Criteria
-
-Atlas replaces multiple independent applications.
-
-User opens Atlas instead of:
-
-Health app
-
-Nutrition app
-
-Weight app
-
-Workout app
-
-Sleep app
-
-Because Atlas becomes the central operating system for personal health.
+- Hydration
+- Supplements
+- Medication
+- Mood
+- Stress
+- Recovery
+- Wearables
+- Desktop Client
+- Web Dashboard
+- Apple Watch
+- Widgets
+- Voice Assistant
 
 ---
 
-# Roadmap Rule
+# Roadmap Principles
 
-Never skip a phase because of UI improvements.
+- Architecture before Features
+- Reuse before Duplication
+- Modules before Screens
+- System Components before Custom Components
+- Stable Build after Every Sprint
+- Documentation updated after Every Sprint
 
-Core functionality always has higher priority than appearance.
+No phase begins until the previous one is stable.

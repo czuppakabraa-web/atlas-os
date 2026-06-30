@@ -1,3 +1,4 @@
+import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
@@ -5,23 +6,25 @@ import {
   RefreshControl,
   ScrollView,
 } from "react-native";
-import { useFocusEffect } from "expo-router";
 
-import NutritionHeader from "../../components/nutrition/NutritionHeader";
-import NutritionTimeline from "../../components/nutrition/NutritionTimeline";
+import AtlasShell from "@/components/layout/AtlasShell";
+import NutritionHeader from "@/components/nutrition/NutritionHeader";
+import NutritionSummary from "@/components/nutrition/NutritionSummary";
+import NutritionTable from "@/components/nutrition/NutritionTable";
+import SystemSection from "@/components/system/SystemSection";
 
 import {
-  getMealsByDate,
   calculateNutrition,
   deleteMeal,
-} from "../../services/nutrition";
+  getMealsByDate,
+} from "@/services/nutrition";
 
-import { Meal } from "../../types/meal";
+import { Meal } from "@/types/meal";
 
 import {
   Colors,
   Spacing,
-} from "../../theme";
+} from "@/theme";
 
 export default function NutritionScreen() {
   const [loading, setLoading] = useState(true);
@@ -102,37 +105,31 @@ export default function NutritionScreen() {
 
   if (loading) {
     return (
-      <ScrollView
-        style={{
-          flex: 1,
-          backgroundColor: Colors.background,
-        }}
-        contentContainerStyle={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <ActivityIndicator
-          size="large"
-          color={Colors.primary}
-        />
-      </ScrollView>
+      <AtlasShell>
+        <ScrollView
+          style={{
+            flex: 1,
+            backgroundColor: Colors.background,
+          }}
+          contentContainerStyle={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ActivityIndicator
+            size="large"
+            color={Colors.primary}
+          />
+        </ScrollView>
+      </AtlasShell>
     );
   }
 
   const totals = calculateNutrition(meals);
 
-  const date = currentDate
-    .toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    })
-    .toUpperCase();
-
   return (
-    <>
+    <AtlasShell>
       <ScrollView
         refreshControl={
           <RefreshControl
@@ -151,25 +148,31 @@ export default function NutritionScreen() {
         }}
       >
         <NutritionHeader
-          date={date}
+          date={currentDate}
           onPrevious={previousDay}
           onNext={nextDay}
         />
 
-        <NutritionTimeline
-          meals={meals}
+        <NutritionSummary
           calories={totals.calories}
-          protein={totals.protein}
-          carbs={totals.carbs}
-          fat={totals.fat}
-          onMealPress={(meal) => {
-            setSelectedMeal(meal);
-            setModalVisible(true);
-          }}
+          protein={Math.round(totals.protein)}
+          carbs={Math.round(totals.carbs)}
+          fat={Math.round(totals.fat)}
         />
-      </ScrollView>
 
-    
-    </>
+  <SystemSection title="MEALS">
+  <NutritionTable
+    meals={meals.map((meal) => ({
+      id: meal.id,
+      name: meal.description,
+      calories: meal.calories,
+      protein: Math.round(meal.protein),
+      carbs: Math.round(meal.carbs),
+      fat: Math.round(meal.fat),
+    }))}
+  />
+</SystemSection>
+      </ScrollView>
+    </AtlasShell>
   );
 }

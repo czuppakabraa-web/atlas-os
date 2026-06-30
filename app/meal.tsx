@@ -1,17 +1,16 @@
 import { useState } from "react";
 import {
-  Alert,
-  ScrollView,
-  Text,
-  TextInput,
-  ActivityIndicator,
+    ActivityIndicator,
+    Alert,
+    ScrollView,
+    Text,
+    TextInput,
 } from "react-native";
 
-import PrimaryButton from "../components/ui/PrimaryButton";
 import MealAnalysisCard from "../components/MealAnalysisCard";
+import PrimaryButton from "../components/ui/PrimaryButton";
 
-import { analyzeMeal } from "../services/ai";
-import { saveMeal } from "../lib/meals";
+import { analyzeAndSaveMeal } from "@/services/mealService";
 
 export default function MealScreen() {
   const [meal, setMeal] = useState("");
@@ -25,23 +24,10 @@ export default function MealScreen() {
   } | null>(null);
 
   async function handleAnalyzeMeal() {
-    if (!meal.trim()) {
-      Alert.alert("Błąd", "Opisz swój posiłek.");
-      return;
-    }
-
     try {
       setLoading(true);
 
-      const data = await analyzeMeal(meal);
-
-      await saveMeal({
-        description: meal,
-        calories: data.calories,
-        protein: data.protein,
-        carbs: data.carbs,
-        fat: data.fat,
-      });
+      const data = await analyzeAndSaveMeal(meal);
 
       setResult(data);
 
@@ -85,7 +71,8 @@ export default function MealScreen() {
           marginBottom: 20,
         }}
       >
-        Opisz dokładnie, co zjadłeś. Atlas AI sam policzy kalorie i makroskładniki.
+        Opisz dokładnie, co zjadłeś. Atlas AI sam policzy kalorie i
+        makroskładniki.
       </Text>
 
       <TextInput

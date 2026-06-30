@@ -1,14 +1,16 @@
 # PROJECT BIBLE
 
-Version: 1.0
+Version: 1.1
+
 Status: Active
+
 Project: Atlas OS
 
 ---
 
 # 1. Vision
 
-Atlas OS is a personal operating system for the human body.
+Atlas OS is an Operating System for the Human Body.
 
 The goal of Atlas is not to become another calorie counter, workout tracker or health application.
 
@@ -16,14 +18,13 @@ The goal is to build one intelligent platform that understands the user's body, 
 
 Atlas should become the place where every important health metric is collected, connected and explained.
 
-The application should eventually replace multiple separate applications such as:
+The application should eventually replace multiple independent applications such as:
 
 - MyFitnessPal
 - Fitatu
 - Apple Health
 - Garmin Connect (partially)
 - Strong
-- Happy Scale
 - Water trackers
 - Supplement trackers
 - AI nutrition assistants
@@ -46,23 +47,25 @@ Atlas should answer questions like:
 - How is my body changing over time?
 - What should I do today?
 
-Instead of simply presenting charts, Atlas should explain them.
+Instead of simply presenting charts,
+
+Atlas should explain them.
 
 ---
 
 # 3. Philosophy
 
-Atlas is built around five principles.
+Atlas is built around six principles.
 
-## 3.1 Core before UI
+## 3.1 Architecture before Features
 
-Functionality is always implemented before visual improvements.
+Architecture has higher priority than feature quantity.
 
-The application must always work correctly before looking beautiful.
+A stable foundation allows Atlas to grow for many years without major rewrites.
 
 ---
 
-## 3.2 One source of truth
+## 3.2 One Source of Truth
 
 Every metric exists only once.
 
@@ -74,48 +77,57 @@ One activity history.
 
 One user profile.
 
-All modules use the same data.
+Every module shares the same data.
 
 ---
 
-## 3.3 AI explains data
+## 3.3 AI Explains Data
 
 AI never invents information.
 
-AI only analyzes real user data.
+AI analyzes real user data.
 
-Every recommendation must be based on measurable metrics.
+Every recommendation must be explainable.
+
+Every conclusion must be supported by measurable metrics.
 
 ---
 
-## 3.4 Manual data always wins
+## 3.4 Manual Data Wins
 
-If the user manually edits imported data,
+Manual user input always has priority over imported values.
 
-manual value becomes the source of truth.
-
-Imported values never overwrite manual corrections.
+Imported data should never overwrite user corrections.
 
 ---
 
 ## 3.5 Simplicity
 
-Atlas should remove complexity.
+Atlas removes complexity.
 
-Every screen must answer one question.
+Every module answers one clear question.
 
 Never overwhelm the user.
 
 ---
 
+## 3.6 Consistency
+
+Every module should feel like part of one operating system.
+
+Navigation, layout, typography and interaction patterns must remain consistent across the entire application.
+
+---
+
 # 4. Product Goals
 
-Atlas must allow the user to:
+Atlas should allow the user to:
 
 - monitor health
 - monitor body composition
 - monitor nutrition
-- monitor activity
+- monitor training
+- monitor recovery
 - monitor sleep
 - monitor habits
 - receive AI analysis
@@ -126,7 +138,7 @@ without switching between multiple applications.
 
 ---
 
-# 5. Long Term Vision
+# 5. Long-Term Vision
 
 Atlas should become an intelligent digital health assistant.
 
@@ -134,79 +146,108 @@ The user should eventually interact with Atlas naturally.
 
 Examples:
 
-"Why didn't I lose weight this week?"
+> Why didn't I lose weight this week?
 
-"Should I eat more protein?"
+> Should I eat more protein?
 
-"What should I improve?"
+> Why is my recovery worse?
 
-"Why is my sleep worse?"
+> What should I improve today?
 
-The AI should answer using real historical data.
-
----
-
-# 6. Core Modules
-
-Current planned modules:
-
-Authentication
-
-Profile
-
-Dashboard
-
-Nutrition
-
-Weight
-
-Body Measurements
-
-Activity
-
-Workouts
-
-Apple Health
-
-Health Connect
-
-Sleep
-
-Hydration
-
-Supplements
-
-Analytics
-
-Atlas AI
-
-Settings
-
-Notifications
-
-Reports
+Every answer should be generated using historical user data.
 
 ---
 
-# 7. Architecture Philosophy
+# 6. Atlas Core
 
-Business logic never lives inside UI components.
+Atlas OS is built around a small number of core systems.
 
-Screens display data.
+These systems form the foundation of every future module.
+
+Current core systems:
+
+- AtlasShell
+- Atlas Navigator
+- Module Registry
+- Design System
+- Services Layer
+- Database Layer
+
+These components are considered stable architecture.
+
+Future modules should reuse them instead of replacing them.
+
+---
+
+# 7. Module Philosophy
+
+Atlas is composed of independent modules.
+
+Examples:
+
+- Dashboard
+- Nutrition
+- Body
+- Training
+- Health
+- Sleep
+- AI Coach
+- Identity
+- Settings
+
+Every module:
+
+- uses AtlasShell
+- is reachable through Atlas Navigator
+- uses the Design System
+- owns its own business logic
+- follows the same architecture
+
+Modules should evolve independently without affecting the rest of the application.
+
+---
+
+# 8. Design System Philosophy
+
+Atlas should never become a collection of unrelated UI components.
+
+Before creating a new component always ask:
+
+**Can this become a reusable System component?**
+
+If yes,
+
+it belongs inside:
+
+```
+components/system/
+```
+
+Module-specific UI should only exist when reuse is impossible.
+
+---
+
+# 9. Architecture Philosophy
+
+Responsibilities are clearly separated.
+
+UI displays data.
+
+Components render data.
 
 Services calculate data.
+
+Lib communicates with external systems.
 
 Supabase stores data.
 
 AI analyzes data.
 
-Components display data.
-
-Every layer has one responsibility.
+Every layer owns exactly one responsibility.
 
 ---
 
-# 8. Technology Stack
+# 10. Technology Stack
 
 Frontend
 
@@ -230,45 +271,38 @@ AI
 
 - OpenAI
 
-Charts
-
-- React Native chart library (TBD)
-
 Storage
 
 - Supabase Storage
 
 ---
 
-# 9. Development Principles
+# 11. Development Standards
 
-Every completed session must satisfy:
+Every completed development session must satisfy:
 
-✓ Project compiles
+- Project compiles
+- Expo starts
+- TypeScript is clean
+- Git commit created
+- GitHub synchronized
+- Documentation updated
 
-✓ Expo starts
-
-✓ No TypeScript errors
-
-✓ Git commit created
-
-✓ GitHub updated
-
-No session ends with a broken application.
+No sprint ends with a broken application.
 
 ---
 
-# 10. Git Workflow
+# 12. Git Workflow
 
-main branch is always stable.
+The main branch is always stable.
 
 Every feature starts from a working project.
 
-Large refactors should never leave the project broken.
+Large refactors never leave the application broken.
 
 Every sprint finishes with:
 
-Working application
+Working Application
 
 ↓
 
@@ -280,96 +314,105 @@ Push
 
 ↓
 
-Documentation update
+Documentation Update
+
+↓
+
+Backup
 
 ---
 
-# 11. User Experience
+# 13. User Experience
 
 Atlas should feel like:
 
-Operating System
+**Operating System**
 
 not
 
-Mobile App.
+**Mobile Application**
 
 The interface should be:
 
-minimal
+- minimal
+- technical
+- precise
+- calm
+- fast
 
-technical
+Animations should support usability,
 
-precise
-
-calm
-
-fast
-
-without unnecessary animations.
-
-Animations should support usability, never distract.
+never distract from it.
 
 ---
 
-# 12. Design Language
+# 14. Design Language
 
 Main inspirations:
 
-Blade Runner
+- Blade Runner
+- Ghost in the Shell
+- NASA Mission Control
+- Modern aircraft HUD
+- Professional monitoring software
 
-Ghost in the Shell
+Atlas deliberately avoids:
 
-NASA Mission Control
+- Material Design look
+- Social media design
+- Gamification
+- Decorative UI
 
-Modern aircraft HUD
-
-Professional monitoring software
-
-No Material Design look.
-
-No social media look.
-
-No gamification.
-
-Atlas is a productivity tool.
+Atlas is a productivity system.
 
 ---
 
-# 13. Core Rule
+# 15. Development Rules
 
-Whenever a decision is made, ask:
+Before implementing any feature ask:
 
-"Does this improve the operating system?"
+1. Which module owns this feature?
+2. Which layer owns this responsibility?
+3. Can an existing System component be reused?
+4. Does this introduce duplicated logic?
+5. Does this improve Atlas as a whole?
 
-If the answer is no,
+If any answer is unclear,
 
-it probably does not belong inside Atlas.
+the implementation should be reconsidered.
 
 ---
 
-# 14. Definition of Success
+# 16. Definition of Success
 
-Atlas succeeds when the user no longer needs several health applications.
+Atlas succeeds when the user no longer needs several independent applications.
 
-The application becomes the single source of truth for:
+Atlas becomes the single source of truth for:
 
-nutrition
-
-weight
-
-activity
-
-sleep
-
-health
-
-AI insights
-
-future predictions
-
-daily decision making
+- nutrition
+- body composition
+- health
+- training
+- recovery
+- sleep
+- AI insights
+- long-term progress
+- daily decision making
 
 Atlas is not built to count calories.
 
 Atlas is built to understand the human body.
+
+---
+
+# 17. Final Principle
+
+Whenever a technical or product decision is made, ask one question:
+
+> **Does this improve Atlas OS as an Operating System for the Human Body?**
+
+If the answer is **no**,
+
+the feature probably does not belong inside Atlas.
+
+This principle has priority over convenience, speed of implementation and short-term feature growth.

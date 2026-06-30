@@ -1,23 +1,22 @@
-export const Colors = {
-  background: "#0A0F18",
+export const AtlasColors = {
+  background: "#050505",
+  surface: "#0B0F12",
 
-  surface: "#111827",
+  primary: "#52E8FF",
+  primaryDim: "#2F6E78",
 
-  elevated: "#182231",
+  text: "#E8FFFF",
+  textDim: "#7B8A92",
 
-  border: "#263244",
+  divider: "#1A2328",
 
-  primary: "#4AA8FF",
+  // aliasy dla starego kodu
+  border: "#1A2328",
+  secondaryText: "#7B8A92",
 
-  success: "#58F29A",
-
-  warning: "#F9B84A",
-
+  success: "#53FF9D",
+  warning: "#FFD166",
   danger: "#FF6B6B",
-
-  text: "#FFFFFF",
-
-  secondaryText: "#8C98AA",
-
-  tertiaryText: "#5F6B7B",
 };
+
+export const Colors = AtlasColors;

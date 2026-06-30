@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import AtlasNavigator from "@/components/navigator/AtlasNavigator";
 
 import { Colors } from "../../theme";
 
@@ -24,6 +26,8 @@ export default function AtlasShell({
         }}
       >
         {children}
+
+        <AtlasNavigator />
       </View>
     </SafeAreaView>
   );

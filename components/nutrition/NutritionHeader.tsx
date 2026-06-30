@@ -1,12 +1,31 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, View } from "react-native";
 
-import { Colors } from "../../theme";
+import SystemHeading from "@/components/system/SystemHeading";
+import SystemText from "@/components/system/SystemText";
+import { AtlasColors } from "@/theme/colors";
+import SystemStatus from "../system/SystemStatus";
 
 type Props = {
-  date: string;
+  date: Date;
   onPrevious: () => void;
   onNext: () => void;
 };
+
+function formatDate(date: Date) {
+  const today = new Date();
+
+  if (date.toDateString() === today.toDateString()) {
+    return "TODAY";
+  }
+
+  return date
+    .toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    })
+    .toUpperCase();
+}
 
 export default function NutritionHeader({
   date,
@@ -16,9 +35,15 @@ export default function NutritionHeader({
   return (
     <View
       style={{
-        marginBottom: 24,
+        marginBottom: 40,
       }}
     >
+      <SystemHeading>NUTRITION</SystemHeading>
+
+      <SystemStatus>
+    [NTR-2359-OS]
+</SystemStatus>
+
       <View
         style={{
           flexDirection: "row",
@@ -29,17 +54,16 @@ export default function NutritionHeader({
           onPress={onPrevious}
           style={{
             width: 40,
-            alignItems: "flex-start",
           }}
         >
-          <Text
+          <SystemText
             style={{
-              color: Colors.primary,
+              color: AtlasColors.primary,
               fontSize: 22,
             }}
           >
             ◀
-          </Text>
+          </SystemText>
         </Pressable>
 
         <View
@@ -48,16 +72,14 @@ export default function NutritionHeader({
             alignItems: "center",
           }}
         >
-          <Text
+          <SystemText
             style={{
-              color: Colors.text,
-              fontSize: 18,
+              fontSize: 22,
               letterSpacing: 3,
-              fontWeight: "600",
             }}
           >
-            {date}
-          </Text>
+            {formatDate(date)}
+          </SystemText>
         </View>
 
         <Pressable
@@ -67,24 +89,16 @@ export default function NutritionHeader({
             alignItems: "flex-end",
           }}
         >
-          <Text
+          <SystemText
             style={{
-              color: Colors.primary,
+              color: AtlasColors.primary,
               fontSize: 22,
             }}
           >
             ▶
-          </Text>
+          </SystemText>
         </Pressable>
       </View>
-
-      <View
-        style={{
-          height: 1,
-          backgroundColor: Colors.border,
-          marginTop: 18,
-        }}
-      />
     </View>
   );
 }
